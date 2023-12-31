@@ -9,25 +9,18 @@ class CurlApiClient
         $this->apiEndpoint = $apiEndpoint;
     }
 
-    /**
-     * Fetch data from the API.
-     *
-     * @return array The decoded JSON response.
-     */
-    public function fetchData(): array
+    public function fetchData()
     {
         $ch = curl_init($this->apiEndpoint);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
 
-        // Check for cURL errors
         if (curl_errno($ch)) {
             echo 'Curl error: ' . curl_error($ch);
         }
 
         curl_close($ch);
 
-        // Decode the JSON response
         return json_decode($response, true);
     }
 }

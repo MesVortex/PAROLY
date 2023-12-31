@@ -25,7 +25,6 @@ $data = $curlApiClient->fetchData();
             <h2>Openwhyd Playlists</h2>
             <div class="list">
                 <?php
-                // Display only 10 items
                 $count = 0;
                 foreach ($data['tracks'] as $item):
                     if ($count >= 10) {
