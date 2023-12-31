@@ -11,7 +11,7 @@ $data = $curlApiClient->fetchData();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Openwhyd Playlists</title>
+    <title>Paroly Playlists</title>
     <link rel="stylesheet" href="./public/css/style.css">
 </head>
 
@@ -31,19 +31,19 @@ $data = $curlApiClient->fetchData();
                         break;
                     }
                     ?>
-                <div class="item">
-                    <img src="<?php echo $item['img']; ?>" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
+                    <div class="item">
+                        <img src="<?php echo $item['img']; ?>" />
+                        <div class="play">
+                            <span class="fa fa-play"></span>
+                        </div>
+                        <h4>
+                            <?php echo $item['name']; ?>
+                        </h4>
+                        <p>
+                            <?php echo $item['uNm']; ?>
+                        </p>
                     </div>
-                    <h4>
-                        <?php echo $item['name']; ?>
-                    </h4>
-                    <p>
-                        <?php echo $item['uNm']; ?>
-                    </p>
-                </div>
-                <?php
+                    <?php
                     $count++;
                 endforeach;
                 ?>
