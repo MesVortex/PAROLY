@@ -152,18 +152,23 @@
   }
   .spotify-playlists .list {
     display: flex;
+    flex-wrap: wrap; 
     gap: 20px;
     overflow: hidden;
-  }
-  .spotify-playlists .list .item {
+}
+
+.spotify-playlists .list .item {
+    flex: 1; 
     min-width: 140px;
-    width: 160px;
+    width: calc(20% - 20px); 
+    box-sizing: border-box;
     padding: 15px;
     background-color: #181818;
     border-radius: 6px;
     cursor: pointer;
     transition: all ease 0.4s;
-  }
+}
+
   .spotify-playlists .list .item:hover {
     background-color: #252525;
   }
