@@ -1,5 +1,4 @@
 <?php
-include_once 'header.php';
 include_once './helpers/session_helper.php';
 ?>
 <h1 class="header">Please Login</h1>
@@ -14,7 +13,3 @@ include_once './helpers/session_helper.php';
 </form>
 
 <div class="form-sub-msg"><a href="./reset-password.php">Forgotten Password?</a></div>
-
-<?php
-include_once 'footer.php'
-    ?>

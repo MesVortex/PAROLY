@@ -1,5 +1,5 @@
 <?php
-require_once("./app/controllers/apiController.php");
+require_once("./controllers/apiController.php");
 $apiEndpoint = 'https://openwhyd.org/hot/electro?format=json';
 $curlApiClient = new CurlApiClient($apiEndpoint);
 $data = $curlApiClient->fetchData();
@@ -16,10 +16,10 @@ $data = $curlApiClient->fetchData();
 </head>
 
 <body>
-    <?php include("./app/helpers/sidebar.php") ?>
+    <?php include("./helpers/sidebar.php") ?>
 
     <div class="main-container">
-        <?php include("./app/helpers/navbar.php") ?>
+        <?php include("./helpers/navbar.php") ?>
 
         <div class="spotify-playlists">
             <h2>Openwhyd Playlists</h2>
