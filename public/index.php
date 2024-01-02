@@ -1,5 +1,8 @@
 <?php
-require_once("./app/controllers/apiController.php");
+require_once("../app/Bootstrap.php");
+
+
+require_once("../app/controllers/apiController.php");
 $apiEndpoint = 'https://openwhyd.org/hot/electro?format=json';
 $curlApiClient = new CurlApiClient($apiEndpoint);
 $data = $curlApiClient->fetchData();
@@ -12,14 +15,14 @@ $data = $curlApiClient->fetchData();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paroly Playlists</title>
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <?php include("./app/helpers/sidebar.php") ?>
+    <?php include("../app/helpers/sidebar.php") ?>
 
     <div class="main-container">
-        <?php include("./app/helpers/navbar.php") ?>
+        <?php include("../app/helpers/navbar.php") ?>
 
         <div class="spotify-playlists">
             <h2>Openwhyd Playlists</h2>

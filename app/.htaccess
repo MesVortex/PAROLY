@@ -1,5 +1,1 @@
-this is a configuration file to override server configuration settingd(apache) to have a friendly url structures
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+Options -indexes
