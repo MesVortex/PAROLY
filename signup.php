@@ -1,5 +1,5 @@
 <?php
-include_once './app/helpers/session_helper.php';
+include_once './helpers/session_helper.php';
 ?>
 
 <h1 class="header">Please Signup</h1>
