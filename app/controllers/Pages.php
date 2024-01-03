@@ -17,6 +17,10 @@ $this->view('pages/index');
     public function about (){
      
     }
+
+    public function artiste(){
+        $this->view('pages/artistev');
+    }
 }
 
 
