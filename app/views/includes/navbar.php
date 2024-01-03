@@ -17,7 +17,7 @@
             </li>
             <li class="divider">|</li>
             <li>
-                <a href="#">Sign Up</a>
+                <a href="<?php echo URLROOT; ?>/pages/signup">Sign Up</a>
             </li>
         </ul>
         <button type="button">Log In</button>
