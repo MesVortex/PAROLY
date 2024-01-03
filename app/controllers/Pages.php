@@ -30,6 +30,10 @@ class Pages extends Controller
         $this->view('Pages/login');
 
     }
+
+    public function artiste(){
+        $this->view('pages/artistev');
+    }
 }
 
 
