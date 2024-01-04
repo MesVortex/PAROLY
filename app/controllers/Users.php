@@ -24,7 +24,8 @@ class Users extends Controller
             'username' => trim($_POST['username']),
             'email' => trim($_POST['email']),
             'password' => trim($_POST['password']),
-            'pwdRepeat' => trim($_POST['pwdRepeat'])
+            'pwdRepeat' => trim($_POST['pwdRepeat']),
+            'role_type' => trim($_POST['role_type'])
         ];
 
         //Validate inputs
