@@ -11,6 +11,10 @@ public function dash(){
 
     $this->view('admin/dashAdmin');
 }
+public function login(){
+
+    $this->view('admin/login');
+}
 
 }
 
