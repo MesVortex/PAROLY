@@ -1,8 +1,3 @@
-<?php
-include_once APPROOT . '/helpers/session_helper.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +13,9 @@ include_once APPROOT . '/helpers/session_helper.php';
 
         <h1 class="text-2xl mb-4 text-green-500 mx-auto">Please Signup</h1>
 
-        <?php flash('register') ?>
 
-        <form method="post" action="./app/controllers/Users.php" class="flex flex-col">
+
+        <form method="post" action=" <?php echo URLROOT ?>/Users/register" class="flex flex-col">
             <input type="hidden" name="type" value="register" class="hidden">
             <input type="text" name="username" placeholder="Full name..."
                 class="p-2 mb-2 border rounded bg-gray-900 text-white">

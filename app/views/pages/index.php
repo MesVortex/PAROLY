@@ -16,7 +16,13 @@ require APPROOT . '/views/includes/header.php';
     <?php include APPROOT . '/views/includes/navbar.php' ?>
 
     <div class="spotify-playlists">
-        <h2>Openwhyd Playlists</h2>
+        <h2>Openwhyd Playlists <p>
+                <?php
+                echo $_SESSION['username'];
+
+                ?>
+            </p>
+        </h2>
         <div class="list">
             <?php
             $count = 0;

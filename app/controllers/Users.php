@@ -1,5 +1,5 @@
 <?php
-require_once '../helpers/session_helper.php';
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Users extends Controller
 {
@@ -14,6 +14,7 @@ class Users extends Controller
     public function register()
     {
         //Process form
+
 
         //Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -59,7 +60,7 @@ class Users extends Controller
 
         //Register User
         if ($this->userModel->register($data)) {
-            redirect("../login.php");
+            $this->view('/Pages/index');
         } else {
             die("Something went wrong");
         }
@@ -69,7 +70,7 @@ class Users extends Controller
     {
 
         //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
         //Init data
         $data = [
@@ -102,10 +103,10 @@ class Users extends Controller
 
     public function createUserSession($user)
     {
-        $_SESSION['usersId'] = $user->usersId;
+        // $_SESSION['usersId'] = $user->usersId;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
-        redirect("../index.php");
+        $this->view('/Pages/index');
     }
 
     public function logout()
@@ -114,7 +115,7 @@ class Users extends Controller
         unset($_SESSION['username']);
         unset($_SESSION['email']);
         session_destroy();
-        redirect("../index.php");
+        $this->view('/Pages/index');
     }
 }
 
@@ -130,15 +131,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $init->login();
             break;
         default:
-            redirect("../index.php");
+            redirect("../index");
     }
 
-} else {
-    switch ($_GET['q']) {
-        case 'logout':
-            $init->logout();
-            break;
-        default:
-            redirect("../index.php");
+}
+
+
+function forgot_password($email)
+{
+
+
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'haritiasmae@gmail.com';                     //SMTP username
+        $mail->Password = 'slt';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('from@example.com', 'Reset your password');
+        $mail->addAddress($email);     //Add a recipient
+
+
+        //Attachments
+        $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Here is the subject';
+        $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }

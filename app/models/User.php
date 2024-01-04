@@ -1,5 +1,5 @@
 <?php
-require_once '../libraries/Database.php';
+
 
 class User
 {
@@ -8,7 +8,7 @@ class User
 
     public function __construct()
     {
-        $this->db = new Database;
+        $this->db = Database::getInstance();
     }
 
     //Find user by email or username
@@ -30,7 +30,7 @@ class User
 
     public function register($data)
     {
-        $this->db->query('INSERT INTO users (username, email,  password) 
+        $this->db->query('INSERT INTO users (username, email,  `password`) 
         VALUES (:name, :email, :password)');
         //Bind values
         $this->db->bind(':name', $data['username']);
@@ -59,8 +59,6 @@ class User
             return false;
         }
     }
-
-    //Reset Password
     public function resetPassword($newPwdHash, $tokenEmail)
     {
         $this->db->query('UPDATE users SET password=:pwd WHERE email=:email');
