@@ -13,8 +13,6 @@ class Users extends Controller
 
     public function register()
     {
-        //Process form
-
 
         //Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -61,6 +59,9 @@ class Users extends Controller
 
         //  Register User
         if ($this->userModel->register($data)) {
+            $_SESSION['username'] = $data['username'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['role_type'] = $data['role_type'];
             $this->view('/Pages/login');
         } else {
             die("Something went wrong");
@@ -107,6 +108,7 @@ class Users extends Controller
         // $_SESSION['usersId'] = $user->usersId;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
+        $_SESSION['role_type'] = $user->role_type;
         $this->view('/Pages/index');
     }
 
@@ -120,10 +122,6 @@ class Users extends Controller
 }
 
 $init = new Users;
-
-//Ensure that user is sending a post request
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
