@@ -1,23 +1,27 @@
 <?php
 
 class Lyrics {
-  private $id;
-  private $text;
-  private $songID;
-  private $userID;
-  private $status;
-  private $db ;
+  private $pdo ;
 
   public function __construct(){
-    $this->db = Database::getInstance()->getConnection(); 
+    $this->pdo = Database::getInstance();
   }
 
   public function addLyrics($userID, $songID, $lyrics){
     $query = "INSERT INTO lyrics(text, song_id, user_id, status, likes) VALUES(:lyrics, :songID, :userID, 'not verified', '0')";
-    $stmt = $this->db->prepare($query);
-    $stmt->bindParam(':lyrics', $lyrics);
-    $stmt->bindParam(':songID', $songID);
-    $stmt->bindParam(':userID', $userID);
-    $stmt->execute();
+    $this->pdo->query($query);
+    $this->pdo->bind(':lyrics', $lyrics);
+    $this->pdo->bind(':songID', $songID);
+    $this->pdo->bind(':userID', $userID);
+    $this->pdo->execute();
   }
+
+  public function showLyrics($songID){
+    $query = "SELECT l.*, u.username FROM lyrics as l JOIN user as u ON l.user_id = u.id WHERE l.song_id = :songID";
+    $this->pdo->query($query);
+    $this->pdo->bind(':songID', $songID);
+    $results = $this->pdo->resultSet();
+    return $results;
+  }
+
 }
