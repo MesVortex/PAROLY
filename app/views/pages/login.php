@@ -29,8 +29,10 @@ include_once APPROOT . '/helpers/session_helper.php';
             <button type="submit" name="submit" class="bg-green-500 text-white p-2 rounded cursor-pointer">Log
                 In</button>
         </form>
+        <a href="<?php echo URLROOT; ?>/pages/signup">Sign Up</a>
 
-        <div class="form-sub-msg mt-4"><a href="./reset-password.php" class="text-gray-400">Forgotten Password?</a>
+        <div class="form-sub-msg mt-4"><a href="<?php echo URLROOT; ?>/pages/newPassword"
+                class="text-gray-400">Forgotten Password?</a>
         </div>
     </div>
 </body>
