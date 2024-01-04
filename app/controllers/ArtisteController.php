@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($_POST['action'] == 'addSong') {
         $name = $_POST['song_name'];
         $image = $_POST['song_image'];
-
+            
         $song = new Song();
         $song->addSong($name, $image);
     } elseif ($_POST['action'] == 'addAlbum') {

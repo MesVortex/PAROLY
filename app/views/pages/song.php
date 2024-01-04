@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>ADD SONG</h1>
-    <form method="post" action="AddController.php">
+    <form method="post" action="ArtisteController.php">
         <label for="song_name">Nom de la chanson:</label>
         <input type="text" name="song_name" required>
         
