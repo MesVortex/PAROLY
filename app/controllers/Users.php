@@ -1,16 +1,14 @@
 <?php
-
-require_once '../models/User.php';
 require_once '../helpers/session_helper.php';
 
-class Users
+class Users extends Controller
 {
 
     private $userModel;
 
     public function __construct()
     {
-        $this->userModel = new User;
+        $this->userModel = $this->model('User');
     }
 
     public function register()
@@ -69,6 +67,7 @@ class Users
 
     public function login()
     {
+
         //Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
