@@ -17,10 +17,7 @@ require APPROOT . '/views/includes/header.php';
 
     <div class="spotify-playlists">
         <h2>Openwhyd Playlists <p>
-                <?php
-                echo $_SESSION['username'];
 
-                ?>
             </p>
         </h2>
         <div class="list">
@@ -31,19 +28,19 @@ require APPROOT . '/views/includes/header.php';
                     break;
                 }
                 ?>
-                <div class="item">
-                    <img src="<?php echo $item['img']; ?>" />
-                    <div class="play">
-                        <span class="fa fa-play"></span>
-                    </div>
-                    <h4>
-                        <?php echo $item['name']; ?>
-                    </h4>
-                    <p>
-                        <?php echo $item['uNm']; ?>
-                    </p>
+            <div class="item">
+                <img src="<?php echo $item['img']; ?>" />
+                <div class="play">
+                    <span class="fa fa-play"></span>
                 </div>
-                <?php
+                <h4>
+                    <?php echo $item['name']; ?>
+                </h4>
+                <p>
+                    <?php echo $item['uNm']; ?>
+                </p>
+            </div>
+            <?php
                 $count++;
             endforeach;
             ?>
