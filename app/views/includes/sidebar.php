@@ -22,7 +22,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="">
                     <span class="fa fas fa-book"></span>
                     <span>Your Library</span>
                 </a>

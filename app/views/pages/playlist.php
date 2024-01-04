@@ -3,183 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.scss">
-    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"> </script>
+
+    <title>Playlist</title>
 </head>
 <body>
 
-<section class="header">
-<div class="artist__header">
-        
-        <div class="artist__info">
-        
-          <div class="profile__img">
-          
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/7022/g_eazy_propic.jpg" alt="G-Eazy" />
-            
-          </div>
-          
-          <div class="artist__info__meta">
-          
-            <div class="artist__info__type">Artist</div>
-            
-            <div class="artist__info__name">G-Eazy</div>
-            
-            <div class="artist__info__actions">
-            
-              <button class="button-dark">
-                <i class="ion-ios-play"></i>
-                Play
-              </button>
-              
-              <button class="button-light">Follow</button>
-              
-              <button class="button-light more">
-                <i class="ion-ios-more"></i>
-              </button>
-              
-            </div>
-            
-          </div>
-          
-          
-        </div>
-        
-        <div class="artist__listeners">
-        
-          <div class="artist__listeners__count">15,662,810</div>
-          
-          <div class="artist__listeners__label">Monthly Listeners</div>
-          
-        </div>
-        
-        <div class="artist__navigation">
-        
-          <ul class="nav nav-tabs" role="tablist">
-            
-            <li role="presentation" class="active">
-              <a href="#artist-overview" aria-controls="artist-overview" role="tab" data-toggle="tab">Overview</a>
-            </li>
-            
-            <li role="presentation">
-              <a href="#related-artists" aria-controls="related-artists" role="tab" data-toggle="tab">Related Artists</a>
-            </li>
-            
-            <!--<li role="presentation">
-              <a href="#artist-about" aria-controls="artist-about" role="tab" data-toggle="tab">About</a>
-            </li>-->
-            
-          </ul>
-          
-          <div class="artist__navigation__friends">
-          
-            <a href="#">
-              <img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="" />
-            </a>
-            
-            <a href="#">
-              <img src="http://zblogged.com/wp-content/uploads/2015/11/5.png" alt="" />
-            </a>
-            
-            <a href="#">
-              <img src="http://cdn.devilsworkshop.org/files/2013/01/enlarged-facebook-profile-picture.jpg" alt="" />
-            </a>
-            
-          </div>
-          
-        </div>
-        
-      </div>
-
-</section>
-    
-    <script>
-        // Sliders
-
-var slider = document.getElementById('song-progress');
-
-noUiSlider.create(slider, {
-	start: [ 20 ],
-	range: {
-		'min': [   0 ],
-		'max': [ 100 ]
-	}
-});
-
-var slider = document.getElementById('song-volume');
-
-noUiSlider.create(slider, {
-	start: [ 90 ],
-	range: {
-		'min': [   0 ],
-		'max': [ 100 ]
-	}
-});
-
-
-// Tooltips
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
-// Viewport Heights
-
-$(window).on("resize load", function(){
+<div class="bg-black text-gray-300 min-h-screen p-10">
   
-  var totalHeight = $(window).height();
-
-  var headerHeight = $('.header').outerHeight();
-  var footerHeight = $('.current-track').outerHeight();
-  var playlistHeight = $('.playlist').outerHeight();
-  var nowPlaying = $('.playing').outerHeight();
-
-  var navHeight = totalHeight - (headerHeight + footerHeight + playlistHeight + nowPlaying);
-  var artistHeight = totalHeight - (headerHeight + footerHeight);
-
-  console.log(totalHeight);
+  <!-- header -->
+  <div class="flex">
+    <img class="mr-6" src="https://placekitten.com/g/200/200">
+    <div class="flex flex-col justify-center">
+      <!-- content -->
+      <h4 class="mt-0 mb-2 uppercase text-gray-500 tracking-widest text-xs">Playlist</h4>
+      <h1 class="mt-0 mb-2 text-white text-4xl">Spotify of Ismail</h1>
+      
+      <p class="text-gray-600 mb-2 text-sm">With J. Cole, Quavo, Ty Dollar $ign</p>
+      <p class="text-gray-600 text-sm">Created by <a>Spotify</a> - 50 songs, 3 hr 2 min</p>
+    </div>
+  </div>
   
-  $(".navigation").css("height" , navHeight);
-  $(".artist").css("height" , artistHeight);
-  $(".social").css("height" , artistHeight);
+  <!-- action buttons -->
+  <div class="mt-6 flex justify-between">
+    <div class="flex">
+      <button class="mr-2 bg-green-500 text-green-100 block py-2 px-8 rounded-full">Play</button>
+      <button class="mr-2 border border-white block p-2 rounded-full">Supprimer</button>
+      <button class="mr-2 border border-white block p-2 rounded-full">...</button>
+    </div>
+  </div>
   
-});
+  <!-- song list   -->
+  <div class="mt-10">
+    <!-- song list header -->
+    <div class="flex text-gray-600">
+      <div class="p-2 w-8 flex-shrink-0"></div>
+      <div class="p-2 w-8 flex-shrink-0"></div>
+      <div class="p-2 w-full">Title</div>
+      <div class="p-2 w-full">Artist</div>
+      <div class="p-2 w-full">Album</div>
+      <div class="p-2 w-12 flex-shrink-0 text-right">⏱</div>
+    </div>
     
-
-
-  
-
-// Collapse Toggles
-
-$(".navigation__list__header").on( "click" , function() {
-  
-  $(this).toggleClass( "active" );
-  
-});
-
-
-// Media Queries
-
-$(window).on("resize load", function(){
-	if ($(window).width() <= 768){	
-		
-    $(".collapse").removeClass("in");
-    
-    $(".navigation").css("height" , "auto");
-    
-    $(".artist").css("height" , "auto");
-    
-	}	
-});
-
-$(window).on("resize load", function(){
-	if ($(window).width() > 768){	
-		
-    $(".collapse").addClass("in");
-    
-	}	
-});
-
-    </script>
+    <div class="flex border-b border-gray-800 hover:bg-gray-800">
+      <div class="p-3 w-8 flex-shrink-0">▶️</div>
+      <div class="p-3 w-full">My Song Here</div>
+      <div class="p-3 w-full">Eminem</div>
+      <div class="p-3 w-full">Spotify</div>
+      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
+    </div>
+    <div class="flex border-b border-gray-800 hover:bg-gray-800">
+      <div class="p-3 w-8 flex-shrink-0">▶️</div>
+      <div class="p-3 w-full">My Song Here</div>
+      <div class="p-3 w-full">Eminem</div>
+      <div class="p-3 w-full">Spotify</div>
+      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
+    </div>
+    <div class="flex border-b border-gray-800 hover:bg-gray-800">
+      <div class="p-3 w-8 flex-shrink-0">▶️</div>
+      <div class="p-3 w-full">My Song Here</div>
+      <div class="p-3 w-full">Eminem</div>
+      <div class="p-3 w-full">Spotify</div>
+      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
+    </div>
+    <div class="flex border-b border-gray-800 hover:bg-gray-800">
+      <div class="p-3 w-8 flex-shrink-0">▶️</div>
+      <div class="p-3 w-full">My Song Here</div>
+      <div class="p-3 w-full">Eminem</div>
+      <div class="p-3 w-full">Spotify</div>
+      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
+    </div>
+    <div class="flex border-b border-gray-800 hover:bg-gray-800">
+      <div class="p-3 w-8 flex-shrink-0">▶️</div>
+      <div class="p-3 w-full">My Song Here</div>
+      <div class="p-3 w-full">Eminem</div>
+      <div class="p-3 w-full">Spotify</div>
+      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
