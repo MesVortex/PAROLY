@@ -15,12 +15,7 @@ include_once APPROOT . '/helpers/session_helper.php';
 </head>
 
 <body class="bg-black text-yellow-500 p-8 rounded-md w-full text-center flex flex-col items-center justify-center">
-    <p>
-        <?php
-        echo $_SESSION['username'];
 
-        ?>
-    </p>
     <div class="bg-gray-700 p-8 rounded shadow-md w-full max-w-xl text-center">
         <h1 class="text-2xl mb-4 text-green-500 mx-auto">Please Login</h1>
 
