@@ -14,8 +14,9 @@ $this->view('pages/index');
 
 }
 
-    public function music(){
-        $this->view('pages/music');
+    public function music($id){
+        $data = ['musicID' => $id];
+        $this->view('pages/music', $data);
     }
 
     public function about (){
