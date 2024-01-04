@@ -20,6 +20,9 @@
                 <a href="<?php echo URLROOT; ?>/pages/signup">Sign Up</a>
             </li>
         </ul>
-        <button type="button">Log In</button>
+        <a href="<?php echo URLROOT; ?>/pages/login">
+
+            <button type="button">Log In</button>
+        </a>
     </div>
 </div>

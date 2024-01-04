@@ -20,7 +20,7 @@ include_once APPROOT . '/helpers/session_helper.php';
 
         <?php flash('login') ?>
 
-        <form method="post" action="./app/controllers/Users.php" class="flex flex-col">
+        <form method="post" action=" <?php echo URLROOT ?>/Users/login" class="flex flex-col">
             <input type="hidden" name="type" value="login" class="hidden">
             <input type="text" name="name/email" placeholder="Username/Email..."
                 class="p-2 mb-2 border rounded bg-gray-900 text-white">
