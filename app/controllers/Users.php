@@ -70,7 +70,7 @@ class Users extends Controller
     {
 
         //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
         //Init data
         $data = [
@@ -103,10 +103,10 @@ class Users extends Controller
 
     public function createUserSession($user)
     {
-        $_SESSION['usersId'] = $user->usersId;
+        // $_SESSION['usersId'] = $user->usersId;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
-        redirect("../");
+        $this->view('/Pages/index');
     }
 
     public function logout()
@@ -115,7 +115,7 @@ class Users extends Controller
         unset($_SESSION['username']);
         unset($_SESSION['email']);
         session_destroy();
-        redirect("../index.php");
+        $this->view('/Pages/index');
     }
 }
 
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $init->login();
             break;
         default:
-            redirect("../index.php");
+            redirect("../index");
     }
 
 }

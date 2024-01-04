@@ -8,6 +8,6 @@ define('DB_NAME', 'paroly');
 
 define('APPROOT', dirname(dirname(__FILE__)));
 
-define('URLROOT', 'http://localhost/PAROLY/');
+define('URLROOT', 'http://localhost:82/paroly');
 
 define('SITENAME', 'PAROLY');
