@@ -14,6 +14,10 @@ $this->view('pages/index');
 
 }
 
+    public function music(){
+        $this->view('pages/music');
+    }
+
     public function about (){
      
     }
