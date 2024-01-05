@@ -6,6 +6,7 @@
   require APPROOT .'/views/includes/header.php';
   $musicID = $data['musicID'];
   $lyrics = $data['lyrics'];
+  $playlists = $data['playlists'];
   $userID = 1;
 ?>
 
@@ -118,9 +119,15 @@
     <!-- Dropdown menu -->
       <div id="dropdown" class="z-10 hidden bg-gray-700 divide-y divide-gray-100 rounded-lg shadow w-44">
           <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            <?php 
+            foreach($playlists as $list){
+            ?>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">add Song to playlist</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><?php echo $list->name ?></a>
             </li>
+            <?php 
+            }
+            ?>
           </ul>
       </div>
     </div>
@@ -201,7 +208,7 @@ The way that things have been, oh-ooh ..."></textarea>
       </div>
       <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white"><?php echo $l->text ;?></p>
       <?php 
-      if($l->status == 'verified'){
+      if($l->status == 1){
         echo 
         '<div>
           <i class="fa-solid fa-circle-check text-green-600"></i>
@@ -217,7 +224,7 @@ The way that things have been, oh-ooh ..."></textarea>
       ?>
     </div>
     <button class="inline-flex self-center items-center" type="button">
-      <i class="fa-regular fa-heart fa-lg text-green-600"></i><span class=" text-green-600 ml-3"><?php echo $l->likes ;?></span>
+      <i class="fa-regular fa-heart fa-lg text-green-600"></i><span class=" text-green-600 ml-3">0</span>
     </button>
     <button class="inline-flex self-center items-center" type="button">
       <i class="fa-regular fa-flag fa-lg hover:text-red-600 text-green-600"></i></i>

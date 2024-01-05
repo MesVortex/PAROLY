@@ -8,7 +8,7 @@ class Lyrics {
   }
 
   public function addLyrics($userID, $songID, $lyrics){
-    $query = "INSERT INTO lyrics(text, song_id, user_id, status, likes) VALUES(:lyrics, :songID, :userID, 'not verified', '0')";
+    $query = "INSERT INTO lyrics(text, song_id, user_id, status) VALUES(:lyrics, :songID, :userID, '0')";
     $this->pdo->query($query);
     $this->pdo->bind(':lyrics', $lyrics);
     $this->pdo->bind(':songID', $songID);
