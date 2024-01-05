@@ -36,7 +36,7 @@ if($_SESSION['role'] != 2){
                     <span class="text">Home Page</span>
                 </a>
             </li>
-        
+
 
         </ul>
         <ul class="side-menu">
@@ -44,7 +44,7 @@ if($_SESSION['role'] != 2){
             <li>
                 <a href="<?php echo URLROOT ?>/AdminController/logout " class="logout">
                     <i class='bx bxs-log-out-circle'></i>
-                    
+
                     <span class="text">Logout</span>
                 </a>
             </li>
@@ -95,34 +95,43 @@ if($_SESSION['role'] != 2){
 
             <ul class="box-info">
                 <li>
-                    <i class='bx'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
+                    <a href="<?= URLROOT ?>/AdminController/styleForm " style="display:flex; justify-content:center; align-items:center;">
+                        <i class='bx'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
 
-                            <title />
+                                <title />
 
-                            <g id="Complete">
+                                <g id="Complete">
 
-                                <g data-name="add" id="add-2">
+                                    <g data-name="add" id="add-2">
 
-                                    <g>
+                                        <g>
 
-                                        <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5" />
+                                            <line fill="none" stroke="#000000" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19"
+                                                y2="5" />
 
-                                        <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12" />
+                                            <line fill="none" stroke="#000000" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12"
+                                                y2="12" />
+
+                                        </g>
 
                                     </g>
 
                                 </g>
+                            </svg>
+                        </i>
 
-                            </g>
-                        </svg>
-                    </i>
-                    <span class="text">
-                        <h3>Add style</h3>
-                    </span>
+                        <span class="text">
+
+                            <h3>Add style</h3>
+                        </span>
+                    </a>
                 </li>
                 <li>
-                    <i class='bx'><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
+                    <i class='bx'><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px"
+                            viewBox="0 0 24 24">
 
                             <title />
 
@@ -132,9 +141,11 @@ if($_SESSION['role'] != 2){
 
                                     <g>
 
-                                        <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5" />
+                                        <line fill="none" stroke="#000000" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5" />
 
-                                        <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12" />
+                                        <line fill="none" stroke="#000000" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12" />
 
                                     </g>
 
@@ -153,57 +164,25 @@ if($_SESSION['role'] != 2){
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Recent Songs</h3>
+                        <h3>Styles</h3>
                     </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>track</th>
-                                <th>date of addition</th>
+                                <th>Style Name</th>
+
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($data['styleNames'] as $styleName): ?>
                             <tr>
                                 <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
+                                    <p><?= $styleName; ?></p>
                                 </td>
-                                <td>01-10-2021</td>
-
                             </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-
-                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
+
                     </table>
                 </div>
 
