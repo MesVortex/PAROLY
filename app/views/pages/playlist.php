@@ -1,16 +1,19 @@
+
+<?php include APPROOT . '/views/includes/sidebar.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <script src="https://cdn.tailwindcss.com"> </script>
-
-    <title>Playlist</title>
-</head>
-<body>
-
-<div class="bg-black text-gray-300 min-h-screen p-10">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <script src="https://cdn.tailwindcss.com"> </script>
+        
+        <title>Playlist</title>
+    </head>
+    <body>
+        
+        <div class="bg-black text-gray-300 min-h-screen p-10">
   
   <!-- header -->
   <div class="flex">

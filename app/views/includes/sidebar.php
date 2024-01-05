@@ -33,7 +33,7 @@
     <div class="navigation">
         <ul>
             <li>
-                <a href="#">
+                <a href="<?php echo URLROOT; ?>/pages/playlist">
                     <span class="fa fas fa-plus-square"></span>
                     <span>Create Playlist</span>
                 </a>
