@@ -30,8 +30,6 @@ class Users extends Controller
     public function register()
     {
 
-        //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         //Init data
         $data = [
@@ -152,7 +150,7 @@ class Users extends Controller
 
         if (empty($data['name/email']) || empty($data['password'])) {
             flash("login", "Please fill out all inputs");
-            $this->view('/Pages/login');
+            $this->view('pages/login');
             exit();
         }
 
@@ -193,23 +191,23 @@ class Users extends Controller
 
 
 
-$init = new Users;
+// $init = new Users;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    switch ($_POST['type']) {
-        case 'register':
-            $init->register();
-            break;
-        case 'login':
-            $init->login();
-            break;
-        default:
-            redirect("../index.php");
-            break;
-    }
-} else {
-    if (isset($_GET['url']) && $_GET['url'] == 'Users/logout') {
-        $init->logout();
-    } else {
-    }
-}
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     switch ($_POST['type']) {
+//         case 'register':
+//             $init->register();
+//             break;
+//         case 'login':
+//             $init->login();
+//             break;
+//         default:
+//             redirect("../index.php");
+//             break;
+//     }
+// } else {
+//     if (isset($_GET['url']) && $_GET['url'] == 'Users/logout') {
+//         $init->logout();
+//     } else {
+//     }
+// }

@@ -38,7 +38,7 @@ class User
     {
         $verification_code = generate_code();
 
-        $this->db->query('INSERT INTO users (username, email,  password, role_type,verification_code) 
+        $this->db->query('INSERT INTO user (username, email,  password, role_type, verification_code) 
         VALUES (:name, :email, :password, :role_type, :verification_code)');
 
 
