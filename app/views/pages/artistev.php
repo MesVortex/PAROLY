@@ -108,7 +108,7 @@
 
             <ul class="box-info">
                 <li>
-                    <a href="song.php">
+                    <a href="<?php echo URLROOT ?>/pages/song">
                         <i class='bx'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
 
@@ -137,7 +137,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="album.php">
+                    <a href="<?php echo URLROOT ?>/pages/album">
                         <i class='bx'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
 

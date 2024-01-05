@@ -6,18 +6,16 @@ class Song
     private $image;
     private $album_id;
 
-    public function __construct(Database $db)
+    public function __construct()
     {
         $this->db = Database::getInstance();
     }
 
-    public function addAlbum($name, $image)
+    public function addSong($name, $new_img_name)
     {
-         $this->db->query("INSERT INTO song (name, image) VALUES (:name, :image)");
-
+        $this->db->query("INSERT INTO song(name, image) VALUES (:name, :image)");
         $this->db->bind(':name', $name);
-        $this->db->bind(':image', $image);
-
+        $this->db->bind(':image', $new_img_name);
         $this->db->execute();
     }
 }

@@ -17,6 +17,10 @@ class Database {
         return self::$instance;
     }
 
+    // public function getConnection() {
+    //     return $this->dbh;
+    // }
+
     // Prepare statement with query
     public function query($sql){
         $this->stmt = $this->dbh->prepare($sql);
@@ -66,4 +70,5 @@ class Database {
       }
 }
 
-?>
+?><?php
+
