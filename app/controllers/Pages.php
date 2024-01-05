@@ -71,6 +71,9 @@ class Pages extends Controller
     public function album(){
         $this->view('pages/album');
     }
+    public function playlist(){
+        $this->view('pages/playlist');
+    }
 }
 
 

@@ -130,7 +130,8 @@ if($_SESSION['role'] != 2){
                     </a>
                 </li>
                 <li>
-                    <i class='bx'><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px"
+                <a href="<?= URLROOT ?>/AdminController/PlaylistForm " style="display:flex; justify-content:center; align-items:center;">
+                 <i class='bx'><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px"
                             viewBox="0 0 24 24">
 
                             <title />
@@ -152,7 +153,8 @@ if($_SESSION['role'] != 2){
                                 </g>
 
                             </g>
-                        </svg></i>
+                        </svg></i></a>
+                   
 
                     <span class="text">
                         <h3>Add playlist</h3>
