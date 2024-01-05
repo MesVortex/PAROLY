@@ -20,7 +20,7 @@ class User
     //Find user by email or username
     public function findUserByEmailOrUsername($email, $username)
     {
-        $this->db->query('SELECT * FROM users WHERE username= :username OR email = :email');
+        $this->db->query('SELECT * FROM user WHERE username= :username OR email = :email');
         $this->db->bind(':username', $username);
         $this->db->bind(':email', $email);
 
@@ -40,6 +40,8 @@ class User
 
         $this->db->query('INSERT INTO users (username, email,  password, role_type,verification_code) 
         VALUES (:name, :email, :password, :role_type, :verification_code)');
+
+
         //Bind values
         $this->db->bind(':name', $data['username']);
         $this->db->bind(':email', $data['email']);
@@ -72,7 +74,7 @@ class User
     }
     public function resetPassword($newPwdHash, $tokenEmail)
     {
-        $this->db->query('UPDATE users SET password=:pwd WHERE email=:email');
+        $this->db->query('UPDATE user SET password=:pwd WHERE email=:email');
         $this->db->bind(':pwd', $newPwdHash);
         $this->db->bind(':email', $tokenEmail);
 
