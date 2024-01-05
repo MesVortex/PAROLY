@@ -27,7 +27,7 @@ private $idUsr;
         $this->db->query("SELECT * FROM playlist WHERE user_id = :idUsr");
         $this->db->bind(':idUsr', $idUsr);
         $this->db->execute();
-    }
+    }    
 
 
 }

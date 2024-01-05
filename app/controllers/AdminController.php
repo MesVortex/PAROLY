@@ -38,6 +38,12 @@ public function styleForm(){
    $this->view('/admin/addstyle');
 
 }
+public function PlaylistForm(){
+        $data =[];
+        
+   $this->view('/admin/addPlaylist');
+
+}
 public function createUserSession($user)
 {
     $_SESSION['role'] = $user->role_type;

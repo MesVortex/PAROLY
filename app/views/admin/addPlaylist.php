@@ -7,9 +7,10 @@
     <title><?= SITENAME?></title>
     <style>
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
 
 
@@ -35,7 +36,7 @@
             place-items: center;
             line-height: 1.5;
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.185);
-            border-radius: 5px 50px ;
+            border-radius: 5px 50px;
         }
 
         .container img {
@@ -65,7 +66,8 @@
             display: block;
             margin-bottom: 5px;
         }
-.container-text input {
+
+        .container-text input {
             width: 100%;
             border: none;
             padding: 10px;
@@ -76,16 +78,68 @@
             border: 2px solid #DADDEC;
         }
 
-        .container-text button {
-            width: 80%;
-            height: 30px;
-            background-image: linear-gradient(to right, #2d57a0, #1db954);
-            font-size: 1rem;
-            border-radius: 10px;
+        .button {
+            all: unset;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0.1em 3em;
+            border: rgba(34, 116, 24, 1) solid 0.15em;
+            border-radius: 0.25em;
+            color: white;
+            font-size: 1.5em;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: border 300ms, color 300ms;
+            user-select: none;
         }
 
-        .container-text button:hover {
-            box-shadow: none;
+        .button p {
+            z-index: 1;
+        }
+
+        .button:hover {
+            color: #212121;
+        }
+
+        .button:active {
+            border-color: teal;
+        }
+
+        .button::after,
+        .button::before {
+            content: "";
+            position: absolute;
+            width: 9em;
+            aspect-ratio: 1;
+            background: rgba(34, 116, 24, 1);
+            opacity: 50%;
+            border-radius: 50%;
+            transition: transform 500ms, background 300ms;
+        }
+
+        .button::before {
+            left: 0;
+            transform: translateX(-8em);
+        }
+
+        .button::after {
+            right: 0;
+            transform: translateX(8em);
+        }
+
+        .button:hover:before {
+            transform: translateX(-1em);
+        }
+
+        .button:hover:after {
+            transform: translateX(1em);
+        }
+
+        .button:active:before,
+        .button:active:after {
+            background: teal;
         }
     </style>
 </head>
@@ -96,13 +150,16 @@
         <div class="container-text">
             <h2>Add PlayList</h2>
             <form method="POST" action="<?= URLROOT ?>/ArtisteController/addPlaylist" enctype="multipart/form-data">
-                <label for="song_name">Name Of Playludt:</label>
+                <label for="song_name">Name Of Playlist:</label>
                 <input type="text" name="name" required>
 
-                <label for="song_image">Image de la chanson:</label>
+                <label for="song_image">Image of playlist:</label>
                 <input type="file" name="image" required>
 
-                <button type="submit">ADD</button>
+
+                <button type="submit" class="button">
+                    <p>ADD</p>
+                </button>
             </form>
         </div>
     </div>
