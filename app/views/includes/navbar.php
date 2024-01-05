@@ -124,6 +124,7 @@
 </div>
 
 <script type="text/javascript">
+
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchForm = document.getElementById('searchForm');
@@ -159,4 +160,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
 </script>
