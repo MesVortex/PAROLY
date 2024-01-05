@@ -13,30 +13,33 @@
 
         <h1 class="text-2xl mb-4 text-green-500 mx-auto">Please Signup</h1>
 
-
         <form method="post" action="<?php echo URLROOT ?>/Users/register" class="flex flex-col">
+
             <input type="hidden" name="type" value="register" class="hidden">
+
             <input type="text" name="username" placeholder="Full name..."
                 class="p-2 mb-2 border rounded bg-gray-900 text-white">
+
             <input type="text" name="email" placeholder="Email..."
                 class="p-2 mb-2 border rounded bg-gray-900 text-white">
+
             <input type="password" name="password" placeholder="Password..."
                 class="p-2 mb-2 border rounded bg-gray-900 text-white">
+
             <input type="password" name="pwdRepeat" placeholder="Repeat password"
                 class="p-2 mb-2 border rounded bg-gray-900 text-white">
-            <div class="mb-4">
-                <label for="role" class="text-white">Select Role:</label>
-                <select name="role_type" id="role" class="p-2 border rounded bg-gray-900 text-white">
-                    <option value="0">Artist</option>
-                    <option value="1">Client</option>
-                </select>
-            </div>
+
+            <!-- Select for Client and Artist -->
+            <label for="clientArtist" class="text-white mb-2">Select Client or Artist:</label>
+            <select name="role_type" id="clientArtist" class="p-2 mb-4 border rounded bg-gray-900 text-white">
+                <option value="1">Artist</option>
+                <option value="2">Client </option>
+
+            </select>
 
             <button type="submit" name="submit" class="bg-green-600 text-white p-2 rounded cursor-pointer">Sign
                 Up</button>
         </form>
-
-
     </div>
 </body>
 
