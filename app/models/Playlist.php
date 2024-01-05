@@ -13,6 +13,7 @@ private $nameSone;
      $this->db = Database::getInstance();
     }
 
+    
 
 
 
