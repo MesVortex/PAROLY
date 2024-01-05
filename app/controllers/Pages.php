@@ -30,9 +30,9 @@ class Pages extends Controller
         $this->view('Pages/login');
 
     }
-    public function newPassword()
+    public function new()
     {
-        $this->view('Pages/create-new-password');
+        $this->view('Pages/new');
     }
 
     public function artiste()

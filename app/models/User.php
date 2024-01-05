@@ -1,6 +1,9 @@
 <?php
+require __DIR__ . "/../../vendor/autoload.php";
+
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
 
 function generate_code()
 {
@@ -70,11 +73,12 @@ class User
             return false;
         }
     }
-    public function resetPassword($newPwdHash, $tokenEmail)
+    public function resetPassword($email, $newpass)
     {
-        $this->db->query('UPDATE users SET password=:pwd WHERE email=:email');
-        $this->db->bind(':pwd', $newPwdHash);
-        $this->db->bind(':email', $tokenEmail);
+        $this->db->query('UPDATE users SET password=:pwd where email:email');
+        $this->db->bind(':pwd', $newpass);
+        $this->db->bind(':email', $email);
+
 
         //Execute
         if ($this->db->execute()) {
@@ -113,29 +117,40 @@ class User
     }
     function forgot_password($email, $verification_code)
     {
-        $link = "<a href='http://localhost:8080/controller.php?code=$verification_code'>here</a>";
+        $link = "<a href='http://localhost:8082/Controllers/Verify'>here</a>";
         $mail = new PHPMailer(true);
 
         try {
-            //Server settings
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+            $mail = new PHPMailer(true);
+
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
             $mail->Username = 'haritiasmae74@gmail.com';                     //SMTP username
-            $mail->Password = 'jykpgcstpwkqmqm';                               //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->Password = 'jykpgcstpwkqmqm';
+
+            //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
             //Recipients
             $mail->setFrom('thedigitalnj@gmail.com', 'CodingShodingWithNJ');
             $mail->addAddress($email, "hariti asmae");
 
             //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
+            //Set email format to HTML
             $mail->Subject = 'Here is the subject';
             $mail->Body = "Thanks for Registering with us. To activate your account click $link";
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            try {
 
-            $mail->send();
+                $mail->send();
+                echo "Email sent successfully";
+            } catch (Exception $e) {
+                echo "Mailer Error: " . $mail->ErrorInfo;
+            }
             // echo 'Message has been sent';
         } catch (Exception $e) {
             echo json_encode(['status' => "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"]);

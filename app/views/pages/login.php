@@ -49,10 +49,10 @@
                                     <button
                                         class="bg-black text-white rounded-md px-2 py-1 w-fit duration-300 hover:scale-x-125 hover:scale-y-110 duration-300 hover:bg-green-600 hover:font-bold">Submit</button>
                                     <a class="text-end font-bold duration-500 hover:text-green-600"
-                                        href="<?= URLROOT . '/pages/index' ?>">Back to home</a>
+                                        href="<?= URLROOT . '/pages/reset_password' ?>">forget password</a>
                                     <p class="text-sm">If you don't have an account! You can <a
                                             class="text-end font-bold duration-500 hover:text-green-600"
-                                            href="<?= URLROOT . '/Users/register' ?>">register Here</a></p>
+                                            href="<?= URLROOT . '/Pages/signup' ?>">register Here</a></p>
                                 </div>
                             </div>
                         </div>

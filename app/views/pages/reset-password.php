@@ -5,7 +5,7 @@ include_once APPROOT . '/helpers/session_helper.php';
 
 <?php flash('reset') ?>
 
-<form method="post" action=" <?php echo URLROOT ?>/Users/Reset" class="flex flex-col">
+<form method="post" action=" <?php echo URLROOT ?>/Users/forgot_password" class="flex flex-col">
     <input type="hidden" name="type" value="send" />
     <input type="text" name="usersEmail" placeholder="Email...">
     <button type="submit" name="submit">Receive Email</button>
