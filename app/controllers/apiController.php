@@ -30,5 +30,22 @@ class CurlApiClient
         // Decode the JSON response
         return json_decode($response, true);
     }
+    public function search($searchTerm)
+    {
+        $searchEndpoint = $this->apiEndpoint . '?uNm=' . urlencode($searchTerm);
+
+        $ch = curl_init($searchEndpoint);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            echo 'Curl error: ' . curl_error($ch);
+        }
+
+        curl_close($ch);
+
+        return json_decode($response, true);
+    }
+
 }
 ?>

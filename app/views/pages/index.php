@@ -1,22 +1,44 @@
 <?php
 require_once APPROOT . '/controllers/apiController.php';
+require_once APPROOT . '/controllers/Users.php';
+
 $apiEndpoint = 'https://openwhyd.org/hot/electro?format=json';
 $curlApiClient = new CurlApiClient($apiEndpoint);
 $data = $curlApiClient->fetchData();
+// $user = new Users();
+// $song = [];
+// $searchResults = [];
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     $artist = $_POST['searchTerm'];
+//     $searchResults = $user->search_songs($artist);
+// } else {
+//     $searchResults = [];
+// }
+// $songs = $user->get_songs($artist);
 require APPROOT . '/views/includes/header.php';
 ?>
 
-
+<?php require APPROOT . '/views/includes/header.php'; ?>
 
 <?php include APPROOT . '/views/includes/sidebar.php' ?>
 
 <div class="main-container">
     <?php include APPROOT . '/views/includes/navbar.php' ?>
 
-    <div class="spotify-playlists">
-        <h2>Openwhyd Playlists <p>
+    <div class="search-container">
+        <form id="searchForm" action="<?php echo URLROOT; ?>/ApiController/search" method="POST">
+            <div class="form-input">
+                <input type="search" id="searchInput" name="searchTerm" placeholder="Search...">
+                <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <div id="searchResults" class="mt-4"></div>
+    </div>
 
-            </p>
+
+
+    <div class="spotify-playlists">
+        <h2>Openwhyd Playlists <p></p>
         </h2>
         <div class="list">
             <?php
@@ -45,5 +67,5 @@ require APPROOT . '/views/includes/header.php';
         </div>
     </div>
 </div>
+
 <script src="https://kit.fontawesome.com/23cecef777.js" crossorigin="anonymous"></script>
-<?php require APPROOT . '/views/includes/footer.php'; ?>

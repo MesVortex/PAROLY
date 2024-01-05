@@ -1,16 +1,21 @@
-<?php
+<?php 
+class PlaylistController extends Controller {
 
-class PlaylistController extends controller{
-    private $playlistname;
 
-    public function __construct(){
-
-    }
-
-    public function addplaylist(){
+private $PlayModel;
+    public function __construct()
+    {
+        $this->PlayModel = $this->model('Playlist');
 
     }
 
-    public function 
 
+    public function addPlaylist(){
+
+        $this->view('/admin/addPlaylist');
+    }
 }
+
+
+
+?>

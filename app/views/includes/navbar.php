@@ -18,6 +18,16 @@
         <button type="button" class="fa fas fa-chevron-left"></button>
         <button type="button" class="fa fas fa-chevron-right"></button>
     </div>
+    <div
+        class="items-center justify-between border-solid border-2 border-white border-opacity-50 p-1 px-2 rounded-3xl hidden sm:flex">
+        <form action="">
+            <div class="form-input">
+                <input type="search" id="searchInput" placeholder="Search...">
+                <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <img src="images/search.png" alt="" />
+    </div>
     <div class="navbar">
         <ul>
             <li>
@@ -85,13 +95,16 @@
 
         <div class="p-6 pt-0 text-center">
             <h1 class="text-3xl font-semibold mb-2">
-                Hello, <?php echo $_SESSION["username"]; ?>
+                Hello,
+                <?php echo $_SESSION["username"]; ?>
             </h1>
             <p class="text-gray-600">Here's some information about your account:</p>
 
             <div class="mt-4">
                 <label for="email" class="text-sm font-medium text-gray-500">Email:</label>
-                <p class="text-lg font-semibold"><?php echo $_SESSION["email"]; ?></p>
+                <p class="text-lg font-semibold">
+                    <?php echo $_SESSION["email"]; ?>
+                </p>
             </div>
 
             <div class="mt-6">
@@ -107,31 +120,45 @@
                 </a>
             </div>
         </div>
-
-
     </div>
 </div>
 
 <script type="text/javascript">
-window.openModal = function(modalId) {
-    document.getElementById(modalId).style.display = 'block'
-    document.getElementsByTagName('body')[0].classList.add('overflow-y-hidden')
-}
 
-window.closeModal = function(modalId) {
-    document.getElementById(modalId).style.display = 'none'
-    document.getElementsByTagName('body')[0].classList.remove('overflow-y-hidden')
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchForm = document.getElementById('searchForm');
+    const searchResultsContainer = document.getElementById('searchResults');
 
-// Close all modals when press ESC
-document.onkeydown = function(event) {
-    event = event || window.event;
-    if (event.keyCode === 27) {
-        document.getElementsByTagName('body')[0].classList.remove('overflow-y-hidden')
-        let modals = document.getElementsByClassName('modal');
-        Array.prototype.slice.call(modals).forEach(i => {
-            i.style.display = 'none'
-        })
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const searchTerm = searchInput.value;
+        fetch(`${URLROOT}/ApiController/search?searchTerm=${encodeURIComponent(searchTerm)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(results => {
+                displaySearchResults(results);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    });
+
+    function displaySearchResults(results) {
+        searchResultsContainer.innerHTML = '';
+
+        for (const result of results) {
+            if (result.username.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                const resultElement = document.createElement('div');
+                resultElement.innerHTML = `<p>Username: ${result.username}</p><hr>`;
+                searchResultsContainer.appendChild(resultElement);
+            }
+        }
     }
-};
+});
+
 </script>
