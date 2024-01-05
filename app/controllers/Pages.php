@@ -34,6 +34,10 @@ class Pages extends Controller
     {
         $this->view('Pages/create-new-password');
     }
+    public function verify()
+    {
+        $this->view('Pages/verify');
+    }
 
     public function artiste()
     {
