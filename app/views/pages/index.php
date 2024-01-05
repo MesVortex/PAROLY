@@ -3,8 +3,6 @@ require_once APPROOT . '/controllers/apiController.php';
 $apiEndpoint = 'https://openwhyd.org/hot/electro?format=json';
 $curlApiClient = new CurlApiClient($apiEndpoint);
 $data = $curlApiClient->fetchData();
-
-
 require APPROOT . '/views/includes/header.php';
 ?>
 
@@ -28,19 +26,19 @@ require APPROOT . '/views/includes/header.php';
                     break;
                 }
                 ?>
-            <div class="item">
-                <img src="<?php echo $item['img']; ?>" />
-                <div class="play">
-                    <span class="fa fa-play"></span>
+                <div class="item">
+                    <img src="<?php echo $item['img']; ?>" />
+                    <div class="play">
+                        <span class="fa fa-play"></span>
+                    </div>
+                    <h4>
+                        <?php echo $item['name']; ?>
+                    </h4>
+                    <p>
+                        <?php echo $item['uNm']; ?>
+                    </p>
                 </div>
-                <h4>
-                    <?php echo $item['name']; ?>
-                </h4>
-                <p>
-                    <?php echo $item['uNm']; ?>
-                </p>
-            </div>
-            <?php
+                <?php
                 $count++;
             endforeach;
             ?>
