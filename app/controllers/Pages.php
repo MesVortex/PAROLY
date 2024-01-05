@@ -43,6 +43,14 @@ class Pages extends Controller
     {
         $this->view('pages/reset-password');
     }
+
+    public function song(){
+        $this->view('pages/song');
+    }
+
+    public function album(){
+        $this->view('pages/album');
+    }
 }
 
 
