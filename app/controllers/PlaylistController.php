@@ -7,9 +7,8 @@ class PlaylistController extends controller{
 
     }
 
-    public function showplaylist(){
+    public function addplaylist(){
 
-        $arr = array()
     }
 
     public function 

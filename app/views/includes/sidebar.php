@@ -22,7 +22,7 @@
             </li>
 
             <li>
-                <a href="">
+                <a href="<?php echo URLROOT; ?>/pages/playlist">
                     <span class="fa fas fa-book"></span>
                     <span>Your Library</span>
                 </a>
@@ -33,7 +33,7 @@
     <div class="navigation">
         <ul>
             <li>
-                <a href="<?php echo URLROOT; ?>/pages/playlist">
+                <a href="#">
                     <span class="fa fas fa-plus-square"></span>
                     <span>Create Playlist</span>
                 </a>
