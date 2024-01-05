@@ -6,7 +6,6 @@ $apiEndpoint = 'https://openwhyd.org/hot/electro?format=json';
 $curlApiClient = new CurlApiClient($apiEndpoint);
 $data = $curlApiClient->fetchData();
 // $user = new Users();
-// $artist = '';
 // $song = [];
 // $searchResults = [];
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
