@@ -18,7 +18,6 @@
         <button type="button" class="fa fas fa-chevron-left"></button>
         <button type="button" class="fa fas fa-chevron-right"></button>
     </div>
-
     <div class="navbar">
         <ul>
             <li>

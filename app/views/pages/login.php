@@ -13,9 +13,8 @@
     </title>
 </head>
 
+
 <body class="bg-gradient-to-br from-black to-green-600 overflow-x-hidden">
-
-
 
     <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
