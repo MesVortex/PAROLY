@@ -2,11 +2,16 @@
 class Pages extends Controller
 {
     private $adminModel;
+    private $lyricsModel;
+    private $playlistModel ;
+
 
     public function __construct()
     {
 
         $this->adminModel = $this->model('Admin');
+        $this->lyricsModel = $this->model('Lyrics');
+        $this->playlistModel = $this->model('Playlist');
     }
 
     public function index()
@@ -14,6 +19,17 @@ class Pages extends Controller
 
         $this->view('pages/index');
 
+}
+
+    public function music($songID){
+        $lyrics =  $this->lyricsModel->showLyrics($songID);
+        $playlists = $this->playlistModel->showPlaylists(1);
+        $data = [
+            'musicID' => $songID,
+            'lyrics' => $lyrics,
+            'playlists' => $playlists
+        ];
+        $this->view('pages/music', $data);
     }
 
     public function about()

@@ -12,7 +12,7 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 196px;
+    width: 266px;
     background-color: #000000;
     padding: 24px;
   }
@@ -124,7 +124,8 @@
     color: #ffffff;
     font-size: 26px;
     margin: 0px 20px;
-    width: auto;
+    width: 100;
+
   }
   .topbar .navbar button {
     font-size: 16px;

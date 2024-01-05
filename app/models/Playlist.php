@@ -14,6 +14,13 @@ private $idUsr;
      $this->db = Database::getInstance();
     }
 
+    public function showPlaylists($userID){
+        $query = "SELECT name FROM playlist WHERE user_id = :userID";
+        $this->db->query($query);
+        $this->db->bind(':userID', $userID);
+        $playlists = $this->db->resultSet();
+        return $playlists;
+    }    
     public function addPlaylistClient($namePlaylist, $imgPlaylist, $idUsr){
         $this->db->query("INSERT INTO playlist (name, image, user_id) VALUES (:namePlaylist, :imgPlaylist, :idUsr)");
         $this->db->bind(':namePlaylist', $namePlaylist);

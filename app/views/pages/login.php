@@ -51,7 +51,7 @@
                                         href="<?= URLROOT . '/pages/index' ?>">Back to home</a>
                                     <p class="text-sm">If you don't have an account! You can <a
                                             class="text-end font-bold duration-500 hover:text-green-600"
-                                            href="<?= URLROOT . '/Users/register' ?>">register Here</a></p>
+                                            href="<?= URLROOT . '/pages/signup' ?>">register Here</a></p>
                                 </div>
                             </div>
                         </div>
