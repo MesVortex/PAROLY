@@ -50,6 +50,10 @@ class Pages extends Controller
     {
         $this->view('Pages/create-new-password');
     }
+    public function verify()
+    {
+        $this->view('Pages/verify');
+    }
 
     public function artiste()
     {
@@ -58,6 +62,14 @@ class Pages extends Controller
     public function reset_password()
     {
         $this->view('pages/reset-password');
+    }
+
+    public function song(){
+        $this->view('pages/song');
+    }
+
+    public function album(){
+        $this->view('pages/album');
     }
 }
 

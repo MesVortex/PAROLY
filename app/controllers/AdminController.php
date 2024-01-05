@@ -1,30 +1,52 @@
 <?php 
 class AdminController extends Controller{
 
-    private $role;
+  
     private $adminModel ;
+    private $styleModel ;
+
     public function __construct()
     {
         $this->adminModel = $this->model('Admin');
+        $this->styleModel = $this->model('Style');
         
     }
 
-public function dash(){
-
-    $this->view('admin/dashAdmin');
-}
+    public function dash() {
+        $stylesArray = $this->styleModel->GetAllStyles();
+    
+        // Extract style names
+        $styleNames = [];
+        foreach ($stylesArray as $style) {
+            $styleNames[] = $style->getStyleName();
+        }
+    
+        // Prepare data for the view
+        $data = ['styleNames' => $styleNames];
+    
+        // Pass data to the view
+        $this->view('admin/dashAdmin', $data);
+    }
+    
 public function loginform (){
 
     $this->view('/admin/login');
 
 } 
+public function styleForm(){
+
+   $this->view('/admin/addstyle');
+
+}
 public function createUserSession($user)
 {
     $_SESSION['role'] = $user->role_type;
     $_SESSION['username'] = $user->username;
     $_SESSION['email'] = $user->email;
-    $this->view('/admin/dashAdmin');
+    $this->dash();
 }
+
+
 
 public function login()
     {
