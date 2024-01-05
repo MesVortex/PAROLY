@@ -1,5 +1,5 @@
 <?php
-require_once '../helpers/session_helper.php';
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Users extends Controller
 {
@@ -13,17 +13,17 @@ class Users extends Controller
 
     public function register()
     {
-        //Process form
 
         //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         //Init data
         $data = [
             'username' => trim($_POST['username']),
             'email' => trim($_POST['email']),
             'password' => trim($_POST['password']),
-            'pwdRepeat' => trim($_POST['pwdRepeat'])
+            'pwdRepeat' => trim($_POST['pwdRepeat']),
+            'role_type' => trim($_POST['role_type'])
         ];
 
         //Validate inputs
@@ -32,34 +32,37 @@ class Users extends Controller
             empty($data['password']) || empty($data['pwdRepeat'])
         ) {
             flash("register", "Please fill out all inputs");
-            redirect("../signup.php");
+            $this->view('/Pages/signup');
         }
 
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             flash("register", "Invalid email");
-            redirect("../signup.php");
+            $this->view('/Pages/signup');
         }
 
         if (strlen($data['password']) < 6) {
             flash("register", "Invalid password");
-            redirect("../signup.php");
+            $this->view('/Pages/signup');
         } else if ($data['password'] !== $data['pwdRepeat']) {
             flash("register", "Passwords don't match");
-            redirect("../signup.php");
+            $this->view('/Pages/signup');
         }
 
         //User with the same email or password already exists
         if ($this->userModel->findUserByEmailOrUsername($data['email'], $data['username'])) {
             flash("register", "Username or email already taken");
-            redirect("../signup.php");
+            $this->view('/Pages/signup');
         }
 
 
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        //Register User
+        //  Register User
         if ($this->userModel->register($data)) {
-            redirect("../login.php");
+            $_SESSION['username'] = $data['username'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['role_type'] = $data['role_type'];
+            $this->view('/Pages/login');
         } else {
             die("Something went wrong");
         }
@@ -69,7 +72,7 @@ class Users extends Controller
     {
 
         //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
         //Init data
         $data = [
@@ -79,7 +82,7 @@ class Users extends Controller
 
         if (empty($data['name/email']) || empty($data['password'])) {
             flash("login", "Please fill out all inputs");
-            header("location: ../login.php");
+            $this->view('/Pages/login');
             exit();
         }
 
@@ -92,35 +95,34 @@ class Users extends Controller
                 $this->createUserSession($loggedInUser);
             } else {
                 flash("login", "Password Incorrect");
-                redirect("../login.php");
+                $this->view('/Pages/login');
             }
         } else {
             flash("login", "No user found");
-            redirect("../login.php");
+            $this->view('/Pages/login');
         }
     }
 
     public function createUserSession($user)
     {
-        $_SESSION['usersId'] = $user->usersId;
+        // $_SESSION['usersId'] = $user->usersId;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
-        redirect("../index.php");
+        $_SESSION['role_type'] = $user->role_type;
+        $this->view('/Pages/index');
     }
 
     public function logout()
     {
-        unset($_SESSION['usersId']);
         unset($_SESSION['username']);
         unset($_SESSION['email']);
         session_destroy();
-        redirect("../index.php");
+        $this->view('/Pages/index');
     }
 }
 
 $init = new Users;
 
-//Ensure that user is sending a post request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
         case 'register':
@@ -131,14 +133,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         default:
             redirect("../index.php");
-    }
-
-} else {
-    switch ($_GET['q']) {
-        case 'logout':
-            $init->logout();
             break;
-        default:
-            redirect("../index.php");
+    }
+} else {
+    if (isset($_GET['url']) && $_GET['url'] == 'Users/logout') {
+        $init->logout();
+    } else {
+    }
+}
+
+
+
+function forgot_password($email)
+{
+
+
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'haritiasmae@gmail.com';                     //SMTP username
+        $mail->Password = 'slt';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('from@example.com', 'Reset your password');
+        $mail->addAddress($email);     //Add a recipient
+
+
+        //Attachments
+        $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Here is the subject';
+        $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
