@@ -19,6 +19,8 @@ class Album
         $this->db->bind(':image', $image);
         $this->db->execute();
     }
+
+    
 }
 
 ?>

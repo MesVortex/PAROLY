@@ -104,6 +104,10 @@
                 <label for="song_image">Image de la chanson:</label>
                 <input type="file" name="song_image" required>
 
+                <label for="song_image">Album</label>
+                <select name="albumsong"></select>
+
+
                 <input type="hidden" name="action" value="addSong">
                 <button type="submit">ADD</button>
             </form>
