@@ -13,6 +13,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 </style>
+
 <div class="flex h-screen overflow-hidden relative">
   <div class="w-full xl:w-3/12 sm:w-4/12 bg-black text-white flex flex-col">
     <div class="w-52 py-5 px-8">
@@ -71,55 +72,24 @@ input[type="range"]::-webkit-slider-thumb:hover {
       <button class="mr-2 border border-white block p-2 rounded-full">Supprimer</button>
     </div>
   </div>
-  
   <!-- song list   -->
   <div class="mt-10">
     <!-- song list header -->
+    <?php
+    foreach($data['userPlaylist'] as $song){
+
+      ?>
     <div class="flex text-gray-600">
       <div class="p-2 w-8 flex-shrink-0"></div>
       <div class="p-2 w-8 flex-shrink-0"></div>
-      <div class="p-2 w-full">Title</div>
-      <div class="p-2 w-full">Artist</div>
-      <div class="p-2 w-full">Album</div>
+      <div class="p-2 w-full"><?php echo $song->songName ?></div>
+      <div class="p-2 w-full"><?php echo $song->username ?></div>
+      <div class="p-2 w-full"><?php echo $song->albumName ?></div>
       <div class="p-2 w-12 flex-shrink-0 text-right">⏱</div>
     </div>
-    
-    <div class="flex border-b border-gray-800 hover:bg-gray-800">
-      <div class="p-3 w-8 flex-shrink-0">▶️</div>
-      <div class="p-3 w-full">My Song Here</div>
-      <div class="p-3 w-full">Eminem</div>
-      <div class="p-3 w-full">Spotify</div>
-      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
-    </div>
-    <div class="flex border-b border-gray-800 hover:bg-gray-800">
-      <div class="p-3 w-8 flex-shrink-0">▶️</div>
-      <div class="p-3 w-full">My Song Here</div>
-      <div class="p-3 w-full">Eminem</div>
-      <div class="p-3 w-full">Spotify</div>
-      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
-    </div>
-    <div class="flex border-b border-gray-800 hover:bg-gray-800">
-      <div class="p-3 w-8 flex-shrink-0">▶️</div>
-      <div class="p-3 w-full">My Song Here</div>
-      <div class="p-3 w-full">Eminem</div>
-      <div class="p-3 w-full">Spotify</div>
-      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
-    </div>
-    <div class="flex border-b border-gray-800 hover:bg-gray-800">
-      <div class="p-3 w-8 flex-shrink-0">▶️</div>
-      <div class="p-3 w-full">My Song Here</div>
-      <div class="p-3 w-full">Eminem</div>
-      <div class="p-3 w-full">Spotify</div>
-      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
-    </div>
-    <div class="flex border-b border-gray-800 hover:bg-gray-800">
-      <div class="p-3 w-8 flex-shrink-0">▶️</div>
-      <div class="p-3 w-full">My Song Here</div>
-      <div class="p-3 w-full">Eminem</div>
-      <div class="p-3 w-full">Spotify</div>
-      <div class="p-3 w-12 flex-shrink-0 text-right">5:35</div>
-    </div>
-  </div>
+    <?php
+  }
+  ?>
     </div>
     <div id="recenty played" class="text-left p-8">
       <h2 class="text-3xl capitalize my-6">Recently played</h2>

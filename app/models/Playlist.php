@@ -30,11 +30,20 @@ private $idUsr;
         
     }
 
-    public function showPlaylistClient($idUsr){
-        $this->db->query("SELECT * FROM playlist WHERE user_id = :idUsr");
-        $this->db->bind(':idUsr', $idUsr);
-        $this->db->execute();
-    }    
+        public function showPlaylistClient($idUsr){
+            $this->db->query("SELECT playlist.name as playlistName, s.name as songName, a.name as albumName, u.username FROM playlist
+            JOIN pivot_play_song AS pivot ON playlist.id = pivot.id_playlist 
+            JOIN song AS s ON pivot.id_song = s.id
+            JOIN album as a ON a.id = s.album_id 
+            JOIN user as u ON u.id = a.user_id
+            WHERE playlist.user_id = :idUsr ");
+            $this->db->bind(':idUsr', $idUsr);
+            $this->db->execute();
+
+            $result = $this->db->resultSet();
+            
+            return $result;
+        }    
 
 
 }
