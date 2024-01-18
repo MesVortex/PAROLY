@@ -82,12 +82,13 @@
             all: unset;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
             padding: 0.1em 3em;
             border: rgba(34, 116, 24, 1) solid 0.15em;
             border-radius: 0.25em;
             color: white;
-            font-size: 1.5em;
+            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
             overflow: hidden;
@@ -149,17 +150,23 @@
         <img src="<?php echo URLROOT ?>/img/playlist.jpg" alt="image">
         <div class="container-text">
             <h2>Add PlayList</h2>
-            <form method="POST" action="<?= URLROOT ?>/ArtisteController/addPlaylist" enctype="multipart/form-data">
+            <form method="POST" action="<?= URLROOT ?>/PlaylistController/addPlay" enctype="multipart/form-data">
                 <label for="song_name">Name Of Playlist:</label>
                 <input type="text" name="name" required>
 
                 <label for="song_image">Image of playlist:</label>
                 <input type="file" name="image" required>
 
-
-                <button type="submit" class="button">
-                    <p>ADD</p>
-                </button>
+                <div style="display: flex ; width:3rem; gap:4px;">
+                    <button type="submit" class="button">
+                        <p>ADD</p>
+                    </button>
+                    <a href="<?= URLROOT ?>/AdminController/dash">
+                        <button type="button" class="button">
+                            Cancel
+                        </button>
+                    </a>
+                </div>
             </form>
         </div>
     </div>

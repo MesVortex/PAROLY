@@ -4,29 +4,44 @@ class AdminController extends Controller{
   
     private $adminModel ;
     private $styleModel ;
+    private $playModel;
 
     public function __construct()
     {
         $this->adminModel = $this->model('Admin');
         $this->styleModel = $this->model('Style');
+        $this->playModel = $this->model('Playlist');
         
     }
 
     public function dash() {
         $stylesArray = $this->styleModel->GetAllStyles();
+        $playArray = $this->playModel->getAllPlay();
     
-        // Extract style names
-        $styleNames = [];
-        foreach ($stylesArray as $style) {
-            $styleNames[] = $style->getStyleName();
+        $playdata = [];
+        foreach ($playArray as $play) {
+            $playdata[] = [
+                'id' => $play->getIdPlaylist(),
+                'name' => $play->getNamePlaylist(),
+                'image' => $play->getImgPlaylist(),
+                'styles' => $play->getStyle(), 
+            ];
         }
     
-        // Prepare data for the view
-        $data = ['styleNames' => $styleNames];
+        $allStyleNames = [];
+        foreach ($stylesArray as $style) {
+            $allStyleNames[] = $style->getStyleName();
+        }
     
-        // Pass data to the view
+        $data = [
+            'styleNames' => $allStyleNames,
+            'playData' => $playdata,
+        ];
+    
         $this->view('admin/dashAdmin', $data);
     }
+    
+    
     
 public function loginform (){
 
@@ -46,6 +61,7 @@ public function PlaylistForm(){
 }
 public function createUserSession($user)
 {
+    $_SESSION['user_id'] = $user->id;
     $_SESSION['role'] = $user->role_type;
     $_SESSION['username'] = $user->username;
     $_SESSION['email'] = $user->email;
@@ -95,6 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     public function logout()
     {
         unset($_SESSION['role']);
+        unset( $_SESSION['user_id']);
         unset($_SESSION['username']);
         unset($_SESSION['email']);
         session_destroy();
@@ -103,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 
+    
 
 
 
