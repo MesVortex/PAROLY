@@ -72,7 +72,16 @@ class Pages extends Controller
         $this->view('pages/album');
     }
     public function playlist(){
-        $this->view('pages/playlist');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+           $userPlaylist =  $this->playlistModel->showPlaylistClient($_POST['id_user']);
+           $data = [
+            'userPlaylist' => $userPlaylist
+            ];
+    
+           $this->view('pages/playlist', $data);
+        }else{
+            echo 'I didnt make it';
+        }
     }
 }
 

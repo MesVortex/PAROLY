@@ -22,10 +22,13 @@
             </li>
 
             <li>
-                <a href="<?php echo URLROOT; ?>/pages/playlist">
-                    <span class="fa fas fa-book"></span>
-                    <span>Your Library</span>
-                </a>
+                <form action="<?php echo URLROOT; ?>/Pages/playlist" method="post">
+                    <input type="hidden" name="id_user" value ='1'>
+                    <button class="text-gray-500" href="<?php echo URLROOT; ?>/pages/playlist">
+                        <span class="fa fas fa-book"></span>
+                        <span>Your Library</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>
