@@ -47,7 +47,7 @@
             </li>
             <li>
                 <a href="<?php echo URLROOT; ?>/pages/login">
-                    <button type="button">Log In</button>
+                    <button id="log" type="button">Log In</button>
                 </a>
             </li>
             <?php else: ?>
