@@ -18,6 +18,10 @@ if($_SESSION['role'] != 2){
     <title><?php echo SITENAME ; ?></title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-<your-integrity-code>" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" integrity="sha512-Gn6HV/DSyXc8LxU8aONnj2q7+f1IyZIs+apgQIrdeAB7DfLLgWO9L4OV/zCJouJ5QWWug1NWR6QKIbUuWGkF5g==" crossorigin="anonymous" />
+
 </head>
 
 <body>
@@ -50,13 +54,8 @@ if($_SESSION['role'] != 2){
             </li>
         </ul>
     </section>
-    <!-- SIDEBAR -->
 
-
-
-    <!-- CONTENT -->
     <section id="content">
-        <!-- NAVBAR -->
         <nav>
             <i class='bx bx-menu'></i>
             <a href="#" class="nav-link"><?php echo $_SESSION['username'] ?></a>
@@ -76,9 +75,7 @@ if($_SESSION['role'] != 2){
                 <img src="img/people.png">
             </a>
         </nav>
-        <!-- NAVBAR -->
 
-        <!-- MAIN -->
         <main>
             <div class="head-title">
                 <div class="left">
@@ -95,7 +92,8 @@ if($_SESSION['role'] != 2){
 
             <ul class="box-info">
                 <li>
-                    <a href="<?= URLROOT ?>/AdminController/styleForm " style="display:flex; justify-content:center; align-items:center;">
+                    <a href="<?= URLROOT ?>/AdminController/styleForm "
+                        style="display:flex; justify-content:center; align-items:center;">
                         <i class='bx'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
 
@@ -130,31 +128,34 @@ if($_SESSION['role'] != 2){
                     </a>
                 </li>
                 <li>
-                <a href="<?= URLROOT ?>/AdminController/PlaylistForm " style="display:flex; justify-content:center; align-items:center;">
-                 <i class='bx'><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px"
-                            viewBox="0 0 24 24">
+                    <a href="<?= URLROOT ?>/AdminController/PlaylistForm "
+                        style="display:flex; justify-content:center; align-items:center;">
+                        <i class='bx'><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px"
+                                viewBox="0 0 24 24">
 
-                            <title />
+                                <title />
 
-                            <g id="Complete">
+                                <g id="Complete">
 
-                                <g data-name="add" id="add-2">
+                                    <g data-name="add" id="add-2">
 
-                                    <g>
+                                        <g>
 
-                                        <line fill="none" stroke="#000000" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5" />
+                                            <line fill="none" stroke="#000000" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19"
+                                                y2="5" />
 
-                                        <line fill="none" stroke="#000000" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12" />
+                                            <line fill="none" stroke="#000000" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12"
+                                                y2="12" />
+
+                                        </g>
 
                                     </g>
 
                                 </g>
+                            </svg></i></a>
 
-                            </g>
-                        </svg></i></a>
-                   
 
                     <span class="text">
                         <h3>Add playlist</h3>
@@ -193,56 +194,40 @@ if($_SESSION['role'] != 2){
                 <div class="table-data">
                     <div class="order">
                         <div class="head">
-                            <h3>Recent Albums</h3>
+                            <h3>PlayLists</h3>
                         </div>
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Album</th>
-                                    <th>date of addition</th>
+                                    <th>img</th>
+                                    <th>name</th>
+                                    <th>styles</th>
+                                    <th>action Style</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach ($data['playData'] as $play): ?>
                                 <tr>
                                     <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
+                                        <img src=" <?= URLROOT .'/img/'. $play['image'] ?>" alt="">
                                     </td>
-                                    <td>01-10-2021</td>
-
-                                </tr>
-                                <tr>
                                     <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
+                                        <p><?= $play['name'] ?></p>
                                     </td>
-                                    <td>01-10-2021</td>
-
-                                </tr>
-                                <tr>
                                     <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
+                                        <p><?= implode(', ', $play['styles']) ?></p>
                                     </td>
-                                    <td>01-10-2021</td>
-
-                                </tr>
-                                <tr>
                                     <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
+                                        <form action="<?= URLROOT ?>/AdminController/" method="post">
+                                            <input type="hidden" name="playlist_id" value="<?= $play['id'] ?>">
+                                            <button type="submit" class="cursor-pointer">
+                                                <i class="fas fa-plus"></i> Add
+                                            </button>
+                                        </form>
                                     </td>
-                                    <td>01-10-2021</td>
 
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-
-                                </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
