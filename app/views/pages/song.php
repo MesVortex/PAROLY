@@ -105,9 +105,18 @@
                 <input type="file" name="song_image" required>
 
                 <label for="song_image">Album</label>
-                <select name="albumsong"></select>
-
-
+                <select name="albumsong">
+               
+                                <option selected disabled> choose Style of your Album</option>
+                                <?php 
+                                foreach($data['Style'] as $style){
+                                    ?>
+                                    <option value="<?php echo $style->getId();?>"><?php echo $style->getNom();?></option>
+                                    <?php
+                                    }
+                                    ?> 
+                            </select>
+           
                 <input type="hidden" name="action" value="addSong">
                 <button type="submit">ADD</button>
             </form>

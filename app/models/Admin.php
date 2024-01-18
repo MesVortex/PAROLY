@@ -23,18 +23,26 @@ private $db;
         }
     }
    //Login user
+
+   
    public function login($nameOrEmail, $password)
    {
-       $row = $this->FindAdmin($nameOrEmail, $nameOrEmail);
 
-       if ($row == false)
-           return false;
+       $row = $this->FindAdmin($nameOrEmail, $password);
+
+
+       if ($row == null){
+        return null;
+       }
+           
 
        $hashedPassword = $row->password;
        if (password_verify($password, $hashedPassword)) {
+            
+            
            return $row;
        } else {
-           return false;
+           return null;
        }
    }
 

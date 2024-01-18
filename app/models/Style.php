@@ -38,15 +38,20 @@ public function GetAllStyles() {
     $result = $this->db->resultSet();
 
     $stylesArray = array();
-    foreach ($result as $row) {
-        $style = new Style();
-        $style->setStyleId($row->id);
-        $style->setStyleName($row->name);
-        $stylesArray[] = $style;
+
+    foreach ($result as $style) {
+        // Create an associative array for each style
+        $styleArray = array(
+            'id' => $style->id,
+            'name' => $style->name
+        );
+
+        $stylesArray[] = $styleArray;
     }
 
     return $stylesArray;
 }
+
 
 public function addStyle($data){
 

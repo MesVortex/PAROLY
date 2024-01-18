@@ -18,5 +18,6 @@ class Song
         $this->db->bind(':image', $new_img_name);
         $this->db->execute();
     }
+    
 }
 ?>

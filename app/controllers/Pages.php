@@ -2,16 +2,17 @@
 class Pages extends Controller
 {
     private $adminModel;
+    private $styleModel;
 
     public function __construct()
     {
 
         $this->adminModel = $this->model('Admin');
+        $this->styleModel = $this->model('Style');
     }
 
     public function index()
     {
-
         $this->view('pages/index');
 
     }
@@ -49,7 +50,8 @@ class Pages extends Controller
     }
 
     public function album(){
-        $this->view('pages/album');
+        $data = $this->styleModel->GetAllStyles();
+        $this->view('pages/album',$data);
     }
 }
 

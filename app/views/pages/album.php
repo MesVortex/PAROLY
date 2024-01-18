@@ -97,14 +97,21 @@
         <img src="<?php echo URLROOT ?>/img/song.jpg" alt="image">
         <div class="container-text">
             <h2>ADD ALBUM</h2>
-            <form method="post" action="<?php echo URLROOT ?>/ArtisteController/addSong">
-                <label for="song_name">Nom de l'album:</label>
-                <input type="text" name="song_name" required>
+            <form method="POST" action="<?php echo URLROOT ?>/ArtisteController/addAlbum">
+                <label for="album_name">Nom de l'album:</label>
+                <input type="text" name="album_name" required>
 
-                <label for="song_image">Image:</label>
-                <input type="file" name="song_image" required>
+                <label for="album_image">Image:</label>
+                <input type="file" name="album_image" required>
 
-                <input type="hidden" name="action" value="addSong">
+                <select name="style" id="style">
+                    <?php foreach ($data as $row) { ?>
+                        <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                    <?php } ?>
+
+                </select>
+
+                <!-- <input type="hidden" name="action" value="addSong"> -->
                 <button type="submit">ADD</button>
             </form>
         </div>

@@ -175,10 +175,13 @@ class Users extends Controller
 
     public function createUserSession($user)
     {
-        // $_SESSION['usersId'] = $user->usersId;
+        $_SESSION['userId'] = $user->usersId;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
         $_SESSION['role_type'] = $user->role_type;
+
+        print_r($_SESSION);
+        die();
         $this->view('/Pages/index');
     }
 
@@ -193,23 +196,23 @@ class Users extends Controller
 
 
 
-$init = new Users;
+// $init = new Users;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    switch ($_POST['type']) {
-        case 'register':
-            $init->register();
-            break;
-        case 'login':
-            $init->login();
-            break;
-        default:
-            redirect("../index.php");
-            break;
-    }
-} else {
-    if (isset($_GET['url']) && $_GET['url'] == 'Users/logout') {
-        $init->logout();
-    } else {
-    }
-}
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     switch ($_POST['type']) {
+//         case 'register':
+//             $init->register();
+//             break;
+//         case 'login':
+//             $init->login();
+//             break;
+//         default:
+//             redirect("../index.php");
+//             break;
+//     }
+// } else {
+//     if (isset($_GET['url']) && $_GET['url'] == 'Users/logout') {
+//         $init->logout();
+//     } else {
+//     }
+// }

@@ -50,45 +50,13 @@
             </li>
 
         </ul>
-        <ul class="side-menu">
-            <li>
-                <a href="#">
-                    <i class='bx bxs-cog'></i>
-                    <span class="text">Settings</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="logout">
-                    <i class='bx bxs-log-out-circle'></i>
-                    <span class="text">Logout</span>
-                </a>
-            </li>
-        </ul>
     </section>
     <!-- SIDEBAR -->
 
     <!-- CONTENT -->
     <section id="content">
         <!-- NAVBAR -->
-        <nav>
-            <i class='bx bx-menu'></i>
-            <a href="#" class="nav-link">Categories</a>
-            <form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
-                </div>
-            </form>
-            <!-- <input type="checkbox" id="switch-mode" hidden>
-            <label for="switch-mode" class="switch-mode"></label> -->
-            <a href="#" class="notification">
-                <i class='bx bxs-bell'></i>
-                <span class="num">8</span>
-            </a>
-            <a href="#" class="profile">
-                <img src="img/people.png">
-            </a>
-        </nav>
+        
         <!-- NAVBAR -->
 
         <!-- MAIN -->
@@ -178,16 +146,11 @@
                         <thead>
                             <tr>
                                 <th>track</th>
-                                <th>date of addition</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
+                               
 
                             </tr>
                             <tr>
@@ -195,7 +158,6 @@
                                     <img src="img/people.png">
                                     <p>John Doe</p>
                                 </td>
-                                <td>01-10-2021</td>
 
                             </tr>
                             <tr>
@@ -203,7 +165,6 @@
                                     <img src="img/people.png">
                                     <p>John Doe</p>
                                 </td>
-                                <td>01-10-2021</td>
 
                             </tr>
                             <tr>
@@ -211,7 +172,6 @@
                                     <img src="img/people.png">
                                     <p>John Doe</p>
                                 </td>
-                                <td>01-10-2021</td>
 
                             </tr>
                             <tr>
@@ -219,7 +179,6 @@
                                     <img src="img/people.png">
                                     <p>John Doe</p>
                                 </td>
-                                <td>01-10-2021</td>
 
                             </tr>
                         </tbody>
@@ -237,7 +196,6 @@
                             <thead>
                                 <tr>
                                     <th>Album</th>
-                                    <th>date of addition</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -246,40 +204,35 @@
                                         <img src="img/people.png">
                                         <p>John Doe</p>
                                     </td>
-                                    <td>01-10-2021</td>
-
+    
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="img/people.png">
                                         <p>John Doe</p>
                                     </td>
-                                    <td>01-10-2021</td>
-
+    
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="img/people.png">
                                         <p>John Doe</p>
                                     </td>
-                                    <td>01-10-2021</td>
-
+    
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="img/people.png">
                                         <p>John Doe</p>
                                     </td>
-                                    <td>01-10-2021</td>
-
+    
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="img/people.png">
                                         <p>John Doe</p>
                                     </td>
-                                    <td>01-10-2021</td>
-
+    
                                 </tr>
                             </tbody>
                         </table>

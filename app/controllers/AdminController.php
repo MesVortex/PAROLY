@@ -51,6 +51,8 @@ public function createUserSession($user)
 public function login()
     {
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    
         //Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -66,10 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             exit();
         }
 
+        
+
         //Check for user/email
         if ($this->adminModel->FindAdmin($data['name/email'], $data['name/email'])) {
             //User Found
+            
             $loggedInUser = $this->adminModel->login($data['name/email'], $data['password']);
+            
             if ($loggedInUser) {
                 //Create session
                 $this->createUserSession($loggedInUser);
